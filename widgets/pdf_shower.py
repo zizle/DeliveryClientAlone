@@ -91,7 +91,7 @@ class PDFContentPopup(QDialog):
         # scroll
         scroll_area = QScrollArea()
         scroll_area.setParent(self)
-        scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         # 设置滚动条样式
         with open("media/ScrollBar.qss", "rb") as fp:

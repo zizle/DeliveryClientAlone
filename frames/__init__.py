@@ -34,17 +34,7 @@ import settings
 class WelcomePage(QSplashScreen):
     def __init__(self, *args, **kwargs):
         super(WelcomePage, self).__init__(*args, *kwargs)
-        # 请求启动页
-        try:
-            r = requests.get(url=settings.STATIC_PREFIX + 'startpng/start.png')
-            response_img = r.content
-            if r.status_code != 200:
-                raise ValueError('get starting image error')
-            start_image = QImage.fromData(response_img)
-        except Exception:
-            pixmap = QPixmap('media/start.png')
-        else:
-            pixmap = QPixmap.fromImage(start_image)
+        pixmap = QPixmap('media/start.png')
         scaled_map = pixmap.scaled(QSize(660, 400), Qt.KeepAspectRatio)
         self.setPixmap(scaled_map)
         font = QFont()
