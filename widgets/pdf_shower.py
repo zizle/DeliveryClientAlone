@@ -84,7 +84,7 @@ class PDFContentPopup(QDialog):
         self.file_name = title
         # auth doc type
         self.setWindowTitle(title)
-        self.setFixedSize(1010, 600)
+        self.resize(1010, 600)
         self.download = QPushButton("下载PDF", self)
         self.download.setIcon(QIcon('media/download-file.png'))
         self.setWindowIcon(QIcon("media/reader.png"))
@@ -129,7 +129,7 @@ class PDFContentPopup(QDialog):
         for page_index in range(doc.pageCount):
             page = doc.loadPage(page_index)
             page_label = QLabel()
-            page_label.setMinimumSize(self.width() - 25, self.height())  # 设置label大小
+            page_label.setMinimumSize(self.width() - 28, self.height())  # 设置label大小
             # show PDF content
             zoom_matrix = fitz.Matrix(1.58, 1.5)  # 图像缩放比例
             pagePixmap = page.getPixmap(
@@ -146,4 +146,4 @@ class PDFContentPopup(QDialog):
             page_map.convertFromImage(pageQImage)
             page_label.setPixmap(page_map)
             page_label.setScaledContents(True)  # pixmap resize with label
-            self.page_container.layout().addWidget(page_label)
+            self.page_container.layout().addWidget(page_label, alignment=Qt.AlignHCenter)
